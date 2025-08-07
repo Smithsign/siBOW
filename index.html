@@ -3,125 +3,88 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arrow Game</title>
+    <title>Arrow GAme</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
     <script src="//s3-us-west-2.amazonaws.com/s.cdpn.io/16327/MorphSVGPlugin.min.js"></script>
-    <style>
-      body {
-        margin: 0;
-        background: #FF8C00; /* Warm orange background */
-        margin: 20px;
+    <style >
+      body{
+        margin:0;
+        background:#222;
+        
+        margin:20px;
       }
-      svg {
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
+      svg{
+        width:100%;
+        height:100%;
+        position:fixed;
+        top:0;
+        left:0;
       }
-      span {
-        color: white;
-        font-family: sans-serif;
-        opacity: .3;
+      span{
+        color:white;
+        font-family:sans-serif;
+        opacity:.3;
+      }
+      .burger-text {
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        fill: #F4531C;
+      }
+      .pill-text {
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        font-weight: bold;
+        fill: #aaa;
       }
     </style>
   </head>
   <body>
     <svg id="game" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 400" overflow="visible">
-      <linearGradient id="ArcGradient">
-          <stop offset="0" stop-color="#fff" stop-opacity=".2"/>
+      <linearGradient id="ArcGradient" >
+          <stop offset="0"  stop-color="#fff" stop-opacity=".2"/>
           <stop offset="50%" stop-color="#fff" stop-opacity="0"/>
       </linearGradient>
-      <path id="arc" fill="none" stroke="url(#ArcGradient)" stroke-width="4" d="M100,250c250-400,550-400,800,0" pointer-events="none"/>
-      <defs>
-          <g id="arrow">
-              <line x2="60" fill="none" stroke="#FF4500" stroke-width="2" /> <!-- Orange-red arrow -->
-              <polygon fill="#FF4500" points="64 0 58 2 56 0 58 -2" /> <!-- Orange-red arrowhead -->
-              <polygon fill="#FF8C00" points="2 -3 -4 -3 -1 0 -4 3 2 3 5 0" /> <!-- Orange feathers -->
-          </g>
-      </defs>
-      <!-- Changed target to orange icon (orange slice) -->
-      <g id="target">
-          <path fill="#FFA500" d="M924.2,274.2c-21.5,21.5-45.9,19.9-52,3.2c-4.4-12.1,2.4-29.2,14.2-41c11.8-11.8,29-18.6,41-14.2 C944.1,228.3,945.7,252.8,924.2,274.2z" />
-          <path fill="#FF8C00" d="M915.8,265.8c-14.1,14.1-30.8,14.6-36,4.1c-4.1-8.3,0.5-21.3,9.7-30.5s22.2-13.8,30.5-9.7 C930.4,235,929.9,251.7,915.8,265.8z" />
-          <path fill="#FFA500" d="M908.9,258.9c-8,8-17.9,9.2-21.6,3.5c-3.2-4.9-0.5-13.4,5.6-19.5c6.1-6.1,14.6-8.8,19.5-5.6 C918.1,241,916.9,250.9,908.9,258.9z" />
-          <path fill="#FF6347" d="M903.2,253.2c-2.9,2.9-6.7,3.6-8.3,1.7c-1.5-1.8-0.6-5.4,2-8c2.6-2.6,6.2-3.6,8-2 C906.8,246.5,906.1,250.2,903.2,253.2z" />
-      </g>
-      <g id="bow" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke" pointer-events="none">
-        <polyline fill="none" stroke="#FF6347" stroke-linecap="round" points="88,200 88,250 88,300"/>
-        <path fill="none" stroke="#FF8C00" stroke-width="3" stroke-linecap="round" d="M88,300 c0-10.1,12-25.1,12-50s-12-39.9-12-50"/>
-      </g>
+        <path id="arc" fill="none" stroke="url(#ArcGradient)" stroke-width="4" d="M100,250c250-400,550-400,800,0"  pointer-events="none"/>
+        <defs>
+            <g id="arrow">
+                <line x2="60" fill="none" stroke="#888" stroke-width="2" />
+                <polygon fill="#888" points="64 0 58 2 56 0 58 -2" />
+                <polygon fill="#88ce02" points="2 -3 -4 -3 -1 0 -4 3 2 3 5 0" />
+            </g>
+        </defs>
+        <g id="target">
+            <path fill="#FFF" d="M924.2,274.2c-21.5,21.5-45.9,19.9-52,3.2c-4.4-12.1,2.4-29.2,14.2-41c11.8-11.8,29-18.6,41-14.2 C944.1,228.3,945.7,252.8,924.2,274.2z" />
+            <path fill="#F4531C" d="M915.8,265.8c-14.1,14.1-30.8,14.6-36,4.1c-4.1-8.3,0.5-21.3,9.7-30.5s22.2-13.8,30.5-9.7 C930.4,235,929.9,251.7,915.8,265.8z" />
+            <path fill="#FFF" d="M908.9,258.9c-8,8-17.9,9.2-21.6,3.5c-3.2-4.9-0.5-13.4,5.6-19.5c6.1-6.1,14.6-8.8,19.5-5.6 C918.1,241,916.9,250.9,908.9,258.9z" />
+            <path fill="#F4531C" d="M903.2,253.2c-2.9,2.9-6.7,3.6-8.3,1.7c-1.5-1.8-0.6-5.4,2-8c2.6-2.6,6.2-3.6,8-2 C906.8,246.5,906.1,250.2,903.2,253.2z" />
+        </g>
+        <g id="bow" fill="none" stroke-linecap="round" vector-effect="non-scaling-stroke" pointer-events="none">
+          <polyline fill="none" stroke="#ddd" stroke-linecap="round" points="88,200 88,250 88,300"/>
+          <path fill="none" stroke="#88ce02" stroke-width="3" stroke-linecap="round" d="M88,300 c0-10.1,12-25.1,12-50s-12-39.9-12-50"/>
+        </g>
       <g class="arrow-angle"><use x="100" y="250" xlink:href="#arrow"/></g>
       <clipPath id="mask">
         <polygon opacity=".5" points="0,0 1500,0 1500,200 970,290 950,240 925,220 875,280 890,295 920,310 0,350" pointer-events="none"/>
       </clipPath>
-      <g class="arrows" clip-path="url(#mask)" pointer-events="none">
+      <g class="arrows" clip-path="url(#mask)"  pointer-events="none">
       </g>
      
-     <!-- Changed miss message to "TAKE UR ORANGE PILL BRUH" -->
-     <g class="missyou" fill="#FF4500" opacity="0" transform="translate(-50, 50)">
-      <!-- T -->
-      <path d="M300 120 L340 120 L340 140 L320 140 L320 200 L300 200 Z"/>
-      <!-- A -->
-      <path d="M350 200 L360 120 L380 120 L390 200 L380 200 L375 160 L365 160 L360 200 Z M370 140 L370 150 L365 150 L370 140 Z"/>
-      <!-- K -->
-      <path d="M400 120 L400 200 L420 200 L420 160 L440 200 L460 200 L430 150 L460 120 L440 120 L420 140 L420 120 Z"/>
-      <!-- E -->
-      <path d="M480 120 L480 200 L520 200 L520 180 L500 180 L500 160 L520 160 L520 140 L500 140 L500 120 Z"/>
-      
-      <!-- U -->
-      <path d="M540 120 L540 180 A20 20 0 0 0 580 180 L580 120 L570 120 L570 180 A10 10 0 0 1 550 180 L550 120 Z"/>
-      <!-- R -->
-      <path d="M590 120 L590 200 L620 200 A20 20 0 0 0 620 160 L600 160 L620 120 L610 120 L590 150 L610 150 L610 120 Z"/>
-      
-      <!-- O -->
-      <path d="M650 140 A20 20 0 1 1 650 180 A20 20 0 1 1 650 140 Z"/>
-      <!-- R -->
-      <path d="M690 120 L690 200 L720 200 A20 20 0 0 0 720 160 L700 160 L720 120 L710 120 L690 150 L710 150 L710 120 Z"/>
-      <!-- A -->
-      <path d="M730 200 L740 120 L760 120 L770 200 L760 200 L755 160 L745 160 L740 200 Z M750 140 L750 150 L745 150 L750 140 Z"/>
-      <!-- N -->
-      <path d="M780 120 L780 200 L800 120 L800 200 L790 200 L780 170 L790 140 L790 120 Z"/>
-      <!-- G -->
-      <path d="M810 140 A20 20 0 0 1 850 140 A20 20 0 0 1 850 180 L830 180 L830 160 L840 160 L840 150 A10 10 0 0 0 820 150 L820 170 A10 10 0 0 0 840 170 L840 180 A20 20 0 0 1 810 180 Z"/>
-      <!-- E -->
-      <path d="M860 120 L860 200 L900 200 L900 180 L880 180 L880 160 L900 160 L900 140 L880 140 L880 120 Z"/>
-      
-      <!-- P -->
-      <path d="M920 120 L920 200 L950 200 A15 15 0 0 0 950 170 A15 15 0 0 0 920 170 Z M920 170 L940 170 A5 5 0 0 1 940 180 L920 180 Z"/>
-      <!-- I -->
-      <path d="M960 120 L960 200 L970 200 L970 120 Z"/>
-      <!-- L -->
-      <path d="M980 120 L980 200 L1010 200 L1010 180 L1000 180 L1000 120 Z"/>
-      <!-- L -->
-      <path d="M1020 120 L1020 200 L1050 200 L1050 180 L1030 180 L1030 120 Z"/>
-    </g>
+     <g class="missyou" opacity="0" transform="translate(300, 150)">
+       <text class="pill-text" x="0" y="0">TAKE UR ORANGE PILL BRUH</text>
+     </g>
 
-    <!-- Changed hit message to burger emoji and "SIGM" -->
-    <g class="loveyou" fill="#FF4500" opacity="0" transform="translate(300, 100)">
-      <!-- Burger emoji -->
-      <path d="M0 140 L120 140 L120 160 L0 160 Z" fill="#8B4513"/> <!-- bun bottom -->
-      <path d="M0 120 L120 120 L120 140 L0 140 Z" fill="#F4A460"/> <!-- bun top -->
-      <path d="M10 130 L110 130 L110 135 L10 135 Z" fill="#228B22"/> <!-- lettuce -->
-      <path d="M20 135 L100 135 L100 140 L20 140 Z" fill="#8B0000"/> <!-- meat -->
-      <path d="M30 140 L90 140 L90 145 L30 145 Z" fill="#FFD700"/> <!-- cheese -->
-      
-      <!-- S -->
-      <path d="M140 120 A20 20 0 0 1 180 120 L180 140 A10 10 0 0 0 160 140 L160 160 A10 10 0 0 0 180 160 L180 180 A20 20 0 0 1 140 180 Z" transform="translate(0, -10)"/>
-      <!-- I -->
-      <path d="M200 110 L200 190 L220 190 L220 110 Z" transform="translate(0, -10)"/>
-      <!-- G -->
-      <path d="M230 110 A20 20 0 0 1 270 110 A20 20 0 0 1 270 150 L250 150 L250 130 L260 130 A10 10 0 0 0 240 130 L240 170 A10 10 0 0 0 260 170 L260 190 A20 20 0 0 1 230 190 Z" transform="translate(0, -10)"/>
-      <!-- M -->
-      <path d="M280 110 L280 190 L300 150 L320 190 L320 110 L310 110 L300 140 L290 110 Z" transform="translate(0, -10)"/>
+    <g class="loveyou" opacity="0" transform="translate(300, 150)">
+      <text class="burger-text" x="0" y="0">BURGER KA SAKEN🍔</text>
+      <text class="burger-text" x="0" y="30" font-size="20">siGM!</text>
     </g>
-
-    <g class="hit" fill="#FF8C00" opacity="0" transform="translate(180, -80) rotate(12)">
-      <path d="M383 114L385 195 407 191 406 160 422 155 418 191 436 189 444 112 423 119 422 141 407 146 400 113"/>
-      <path d="M449 185L453 113 477 112 464 186"/>
-      <path d="M486 113L484 130 506 130 481 188 506 187 520 131 540 135 545 119"/>
-      <path d="M526,195l5-20l22,5l-9,16L526,195z M558,164l32-44l-35-9l-19,51L558,164z"/>
-    </g>
+    
+      <g class="hit" fill="#ffcc00" opacity="0" transform="translate(180, -80) rotate(12) ">
+        <path d="M383 114L385 195 407 191 406 160 422 155 418 191 436 189 444 112 423 119 422 141 407 146 400 113"/>
+        <path d="M449 185L453 113 477 112 464 186"/>
+        <path d="M486 113L484 130 506 130 481 188 506 187 520 131 540 135 545 119"/>
+        <path d="M526,195l5-20l22,5l-9,16L526,195z M558,164l32-44l-35-9l-19,51L558,164z"/>
+      </g>
     </svg>
     <span>Draw back an arrow and launch it!</span>
 
@@ -130,6 +93,7 @@
       var cursor = svg.createSVGPoint();
       var arrows = document.querySelector(".arrows");
       var randomAngle = 0;
+
 
       let target = { x: 900, y: 249.5 }; // center of target
       let lineSegment = { // target intersection line segment
@@ -287,7 +251,7 @@
           autoAlpha: 1
         });
         TweenMax.staggerFromTo(
-          selector + " path",
+          selector + " path, " + selector + " text",
           0.5,
           {
             rotation: -5,
@@ -301,7 +265,7 @@
           0.05
         );
         TweenMax.staggerTo(
-          selector + " path",
+          selector + " path, " + selector + " text",
           0.3,
           {
             delay: 2,
