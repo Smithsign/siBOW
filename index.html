@@ -71,7 +71,7 @@
       <path d="M790 150 L790 180 L810 180 L810 100 Z M790 200 L810 200 L810 220 L790 220 Z"/>
     </g>
 
-    <g class="loveyou" fill="#F4531C" opacity="0" transform="translate(300, 100)">
+    <g class="BURGER KA SAKEN🍔" fill="#F4531C" opacity="0" transform="translate(300, 100)">
       <!-- L -->
       <path d="M0 0 L0 80 L30 80 L30 70 L10 70 L10 0 Z"/>
       <!-- O -->
@@ -238,9 +238,9 @@
           var dx = intersection.x - target.x;
           var dy = intersection.y - target.y;
           var distance = Math.sqrt(dx * dx + dy * dy);
-          var selector = ".BURGER KA SAKEN🍔";
+          var selector = ".hit";
           if (distance < 7) {
-            selector = ".GIB ORANGES🍊";
+            selector = ".BURGER KA SAKEN🍔";
           }
           showMessage(selector);
         }
@@ -248,7 +248,7 @@
 
       function onMiss() {
         // Damn!
-        showMessage(".r u farmer?");
+        showMessage(".missyou");
       }
 
       function showMessage(selector) {
